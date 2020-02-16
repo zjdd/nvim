@@ -31,7 +31,7 @@ map <leader>l <C-w>l
 map <leader>n :tabe<CR>
 
 noremap <leader>s :w!<CR>
-noremap q :q<CR>
+noremap <leader>q :wq<CR>
 noremap < <<
 noremap > >>
 
@@ -45,8 +45,10 @@ call plug#begin()
 	Plug 'scrooloose/nerdtree'
 	Plug 'majutsushi/tagbar'
 	Plug 'iamcco/markdown-preview.nvim'
+	Plug 'skywind3000/asynctasks.vim'
 	Plug 'skywind3000/asyncrun.vim'
-	Plug 'ycm-core/YouCompleteMe'
+	Plug 'skywind3000/vim-terminal-help'
+	Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 call plug#end()
 
 color molokai
@@ -64,6 +66,7 @@ let g:mkdp_path_to_chrome = "path/of/chrome"
 let g:mkdp_markdown_css=''
 map <leader>m :MarkdownPreview<CR>
 
-nnoremap <silent><leader>ll :AsyncRun g++ -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
-nnoremap <silent><leader>lr :AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+nnoremap <silent><leader>lr :AsyncTask file-run<cr>
+nnoremap <silent><leader>ll :AsyncTask file-build<cr>
 nnoremap <silent><leader>lo :call asyncrun#quickfix_toggle(6)<cr>
+let g:asynctasks_term_pos = 'tab'
