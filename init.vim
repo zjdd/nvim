@@ -6,9 +6,9 @@ filetype indent on
 filetype plugin on
 filetype plugin indent on
 
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set list
 set smartindent
 
@@ -19,26 +19,31 @@ set wrap
 set scrolloff=5
 
 map <silent><leader>v :set splitright<CR>:vsplit<CR>
-map <silent>J :vertical resize -5<CR>
-map <silent>K :vertical resize +5<CR>
-map <silent>L <C-w>+
-map <silent>H <C-w>-
+map <silent>H :vertical resize -5<CR>
+map <silent>L :vertical resize +5<CR>
+map <silent>K <C-w>+
+map <silent>J <C-w>-
 map <leader>j <C-w>j
 map <leader>k <C-w>k
 map <leader>h <C-w>h
 map <leader>l <C-w>l
 
-map <leader>n :tabe<CR>
+map <silent><leader>n :tabe<CR>
 
+noremap <leader>m q
 noremap <leader>s :w!<CR>
-noremap <leader>q :wq<CR>
-noremap < <<
-noremap > >>
+noremap q :q!<CR>
+
+noremap <silent><leader>1 :b1<CR>
+noremap <silent><leader>2 :b2<CR>
+noremap <silent><leader>3 :b3<CR>
+noremap <silent><leader>4 :b4<CR>
+noremap <silent><leader>5 :b5<CR>
+noremap <silent><leader>6 :b6<CR>
 
 inoremap jk <ESC>
 
 call plug#begin()
-	Plug 'morhetz/gruvbox'
 	Plug 'tomasr/molokai'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
@@ -48,7 +53,7 @@ call plug#begin()
 	Plug 'skywind3000/asynctasks.vim'
 	Plug 'skywind3000/asyncrun.vim'
 	Plug 'skywind3000/vim-terminal-help'
-	Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+	Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 color molokai
@@ -61,12 +66,18 @@ highlight Normal guibg=NONE ctermbg=None
 map <silent><leader>f :NERDTreeToggle<CR>
 
 let g:airline_theme='molokai'
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#buffer_nr_show=1
 
-let g:mkdp_path_to_chrome = "path/of/chrome"
+let g:mkdp_path_to_chrome = "usr/bin/google-chrome-stable"
 let g:mkdp_markdown_css=''
-map <leader>m :MarkdownPreview<CR>
+map <leader>t :MarkdownPreview<CR>
 
 nnoremap <silent><leader>lr :AsyncTask file-run<cr>
 nnoremap <silent><leader>ll :AsyncTask file-build<cr>
 nnoremap <silent><leader>lo :call asyncrun#quickfix_toggle(6)<cr>
+let g:asynctasks_term_pos = 'tab'
+
+let g:python3_host_prog="/opt/anaconda/bin/python"
+let g:ycm_global_ycm_extra_conf = '~/.config/nvim/plugged/YouCompleteMe/cpp/.ycm_extra_conf.py'
 let g:asynctasks_term_pos = 'tab'
