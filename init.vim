@@ -21,8 +21,6 @@ set scrolloff=5
 map <silent><leader>v :set splitright<CR>:vsplit<CR>
 map <silent>H :vertical resize -5<CR>
 map <silent>L :vertical resize +5<CR>
-map <silent>K <C-w>+
-map <silent>J <C-w>-
 map <leader>j <C-w>j
 map <leader>k <C-w>k
 map <leader>h <C-w>h
@@ -32,7 +30,7 @@ map <silent><leader>n :tabe<CR>
 
 noremap <leader>m q
 noremap <leader>s :w!<CR>
-noremap q :q!<CR>
+noremap q :q<CR>
 
 noremap <silent><leader>1 :b1<CR>
 noremap <silent><leader>2 :b2<CR>
@@ -80,4 +78,4 @@ let g:asynctasks_term_pos = 'tab'
 
 let g:python3_host_prog="/opt/anaconda/bin/python"
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/plugged/YouCompleteMe/cpp/.ycm_extra_conf.py'
-let g:asynctasks_term_pos = 'tab'
+let g:asynctasks_term_pos = 'right'
