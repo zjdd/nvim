@@ -47,11 +47,11 @@ call plug#begin()
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'scrooloose/nerdtree'
 	Plug 'majutsushi/tagbar'
-	Plug 'iamcco/markdown-preview.nvim'
 	Plug 'skywind3000/asynctasks.vim'
 	Plug 'skywind3000/asyncrun.vim'
 	Plug 'skywind3000/vim-terminal-help'
 	Plug 'ycm-core/YouCompleteMe'
+	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 call plug#end()
 
 color molokai
@@ -67,7 +67,7 @@ let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
 
-let g:mkdp_path_to_chrome = "usr/bin/google-chrome-stable"
+let g:mkdp_browser = "/usr/bin/google-chrome-stable"
 let g:mkdp_markdown_css=''
 map <leader>t :MarkdownPreview<CR>
 
@@ -76,6 +76,5 @@ nnoremap <silent><leader>ll :AsyncTask file-build<cr>
 nnoremap <silent><leader>lo :call asyncrun#quickfix_toggle(6)<cr>
 let g:asynctasks_term_pos = 'tab'
 
-let g:python3_host_prog="/opt/anaconda/bin/python"
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/plugged/YouCompleteMe/cpp/.ycm_extra_conf.py'
 let g:asynctasks_term_pos = 'right'
