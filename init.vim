@@ -18,7 +18,8 @@ set wildmenu
 set wrap
 set scrolloff=5
 
-map <silent><leader>v :set splitright<CR>:vsplit<CR>
+map <silent><leader>wv :set splitright<CR>:vsplit<CR>
+map <silent><leader>ws :set splitbelow<CR>:split<CR>
 map <silent>H :vertical resize -5<CR>
 map <silent>L :vertical resize +5<CR>
 map <leader>j <C-w>j
@@ -67,7 +68,7 @@ let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
 
-let g:mkdp_browser = "/usr/bin/google-chrome-stable"
+let g:mkdp_browser = "/usr/bin/firefox"
 let g:mkdp_markdown_css=''
 map <leader>t :MarkdownPreview<CR>
 
