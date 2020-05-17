@@ -29,9 +29,8 @@ map <leader>l <C-w>l
 
 map <silent><leader>n :tabe<CR>
 
-noremap <leader>m q
 noremap <leader>s :w!<CR>
-noremap q :q<CR>
+noremap <leader>q :q<CR>
 
 noremap <silent><leader>1 :b1<CR>
 noremap <silent><leader>2 :b2<CR>
@@ -51,8 +50,8 @@ call plug#begin()
 	Plug 'skywind3000/asynctasks.vim'
 	Plug 'skywind3000/asyncrun.vim'
 	Plug 'skywind3000/vim-terminal-help'
-	Plug 'ycm-core/YouCompleteMe'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 color molokai
@@ -62,7 +61,7 @@ set t_Co=256
 set background=dark
 highlight Normal guibg=NONE ctermbg=None
 
-map <silent><leader>f :NERDTreeToggle<CR>
+map <silent><leader>t :NERDTreeToggle<CR>
 
 let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled=1
@@ -70,12 +69,14 @@ let g:airline#extensions#tabline#buffer_nr_show=1
 
 let g:mkdp_browser = "/usr/bin/firefox"
 let g:mkdp_markdown_css=''
-map <leader>t :MarkdownPreview<CR>
+map <leader>mp :MarkdownPreview<CR>
 
 nnoremap <silent><leader>lr :AsyncTask file-run<cr>
 nnoremap <silent><leader>ll :AsyncTask file-build<cr>
 nnoremap <silent><leader>lo :call asyncrun#quickfix_toggle(6)<cr>
 let g:asynctasks_term_pos = 'tab'
-
-let g:ycm_global_ycm_extra_conf = '~/.config/nvim/plugged/YouCompleteMe/cpp/.ycm_extra_conf.py'
 let g:asynctasks_term_pos = 'right'
+
+xmap <leader>f  <Plug>(coc-format)
+nmap <leader>f  <Plug>(coc-format)
+nmap <leader>rn <Plug>(coc-rename)
